@@ -13,6 +13,7 @@ import javax.swing.JComponent;
 import javax.swing.JDesktopPane;
 import ni.edu.ni.Frame.Controllers.PnlVehicleController;
 import ni.edu.ni.Frame.panels.PnlVehicle;
+import ni.edu.ni.Frame.panels.dialogVehicle;
 
 /**
  *
@@ -84,7 +85,7 @@ public class JVehicleApp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mtNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mtNewActionPerformed
-        if(pnlVehicle == null){
+        /*if(pnlVehicle == null){
             pnlVehicle = new PnlVehicle();
             try {
                 pnlVehicleController = new PnlVehicleController(pnlVehicle);
@@ -93,7 +94,11 @@ public class JVehicleApp extends javax.swing.JFrame {
             }
         }
         pnlVehicle.setVisible(true);
-//        addComponent(pnlVehicle);
+//        addComponent(pnlVehicle); ESTO NO VA
+        */
+        // El true sirve para que no permita acceder al frame 
+        dialogVehicle vehicleD = new dialogVehicle(this, true); 
+        vehicleD.setVisible(true);
     }//GEN-LAST:event_mtNewActionPerformed
 
     /**
