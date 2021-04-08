@@ -9,9 +9,9 @@ import java.awt.BorderLayout;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JComponent;
 import javax.swing.JDesktopPane;
 import ni.edu.ni.Frame.Controllers.PnlVehicleController;
+import ni.edu.ni.Frame.Controllers.dialogVehicleController;
 import ni.edu.ni.Frame.panels.PnlVehicle;
 import ni.edu.ni.Frame.panels.dialogVehicle;
 
@@ -20,9 +20,12 @@ import ni.edu.ni.Frame.panels.dialogVehicle;
  * @author JADPA18
  */
 public class JVehicleApp extends javax.swing.JFrame {
+    //dialogVehicle vehicleD;
     private PnlVehicle pnlVehicle;
     private PnlVehicleController pnlVehicleController;
-
+    
+    private dialogVehicle DVehicle;
+    private dialogVehicleController DVehicle_Controller;
     /**
      * Creates new form j
      */
@@ -97,8 +100,20 @@ public class JVehicleApp extends javax.swing.JFrame {
 //        addComponent(pnlVehicle); ESTO NO VA
         */
         // El true sirve para que no permita acceder al frame 
-        dialogVehicle vehicleD = new dialogVehicle(this, true); 
-        vehicleD.setVisible(true);
+        // = new dialogVehicle(this, true);
+        
+        if (DVehicle == null)
+        {
+            DVehicle = new dialogVehicle(this, true);
+            
+            try {
+                DVehicle_Controller = new dialogVehicleController(DVehicle);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(JVehicleApp.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        DVehicle.setVisible(true);
     }//GEN-LAST:event_mtNewActionPerformed
 
     /**

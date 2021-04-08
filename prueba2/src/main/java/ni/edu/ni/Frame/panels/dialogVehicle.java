@@ -5,6 +5,14 @@
  */
 package ni.edu.ni.Frame.panels;
 
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JRadioButton;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Pablo
@@ -18,7 +26,151 @@ public class dialogVehicle extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
+    //  GENERAR GETTERS Y SETTERS
+    public JButton getBtnCancel() {
+        return btnCancel;
+    }
 
+    public void setBtnCancel(JButton btnCancel) {
+        this.btnCancel = btnCancel;
+    }
+
+    public ButtonGroup getBtnGroupTransmission() {
+        return btnGroupTransmission;
+    }
+
+    public void setBtnGroupTransmission(ButtonGroup btnGroupTransmission) {
+        this.btnGroupTransmission = btnGroupTransmission;
+    }
+
+    public JRadioButton getBtnMan() {
+        return btnMan;
+    }
+
+    public void setBtnMan(JRadioButton btnMan) {
+        this.btnMan = btnMan;
+    }
+
+    public JButton getBtnSave() {
+        return btnSave;
+    }
+
+    public void setBtnSave(JButton btnSave) {
+        this.btnSave = btnSave;
+    }
+
+    public JComboBox<String> getCmbEColor() {
+        return cmbEColor;
+    }
+
+    public void setCmbEColor(JComboBox<String> cmbEColor) {
+        this.cmbEColor = cmbEColor;
+    }
+
+    public JComboBox<String> getCmbIColor() {
+        return cmbIColor;
+    }
+
+    public void setCmbIColor(JComboBox<String> cmbIColor) {
+        this.cmbIColor = cmbIColor;
+    }
+
+    public JComboBox<String> getCmbMake() {
+        return cmbMake;
+    }
+
+    public void setCmbMake(JComboBox<String> cmbMake) {
+        this.cmbMake = cmbMake;
+    }
+
+    public JComboBox<String> getCmbModel() {
+        return cmbModel;
+    }
+
+    public void setCmbModel(JComboBox<String> cmbModel) {
+        this.cmbModel = cmbModel;
+    }
+
+    public JComboBox<String> getCmbStatus() {
+        return cmbStatus;
+    }
+
+    public void setCmbStatus(JComboBox<String> cmbStatus) {
+        this.cmbStatus = cmbStatus;
+    }
+
+    public JComboBox<String> getCmbYear() {
+        return cmbYear;
+    }
+
+    public void setCmbYear(JComboBox<String> cmbYear) {
+        this.cmbYear = cmbYear;
+    }
+
+    public JFormattedTextField getFmtVin() {
+        return fmtVin;
+    }
+
+    public void setFmtVin(JFormattedTextField fmtVin) {
+        this.fmtVin = fmtVin;
+    }
+
+    public JRadioButton getRbtnAut() {
+        return rbtnAut;
+    }
+
+    public void setRbtnAut(JRadioButton rbtnAut) {
+        this.rbtnAut = rbtnAut;
+    }
+
+    public JSpinner getSpnMiles() {
+        return spnMiles;
+    }
+
+    public void setSpnMiles(JSpinner spnMiles) {
+        this.spnMiles = spnMiles;
+    }
+
+    public JSpinner getSpnPrice() {
+        return spnPrice;
+    }
+
+    public void setSpnPrice(JSpinner spnPrice) {
+        this.spnPrice = spnPrice;
+    }
+
+    public JTextField getTxtEngine() {
+        return txtEngine;
+    }
+
+    public void setTxtEngine(JTextField txtEngine) {
+        this.txtEngine = txtEngine;
+    }
+
+    public JTextField getTxtImage() {
+        return txtImage;
+    }
+
+    public void setTxtImage(JTextField txtImage) {
+        this.txtImage = txtImage;
+    }
+
+    public JTextField getTxtStock() {
+        return txtStock;
+    }
+
+    public void setTxtStock(JTextField txtStock) {
+        this.txtStock = txtStock;
+    }
+
+    public JTextField getTxtStyle() {
+        return txtStyle;
+    }
+
+    public void setTxtStyle(JTextField txtStyle) {
+        this.txtStyle = txtStyle;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,6 +181,7 @@ public class dialogVehicle extends javax.swing.JDialog {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        btnGroupTransmission = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -41,27 +194,28 @@ public class dialogVehicle extends javax.swing.JDialog {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        btnSave = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
+        cmbYear = new javax.swing.JComboBox<>();
+        cmbMake = new javax.swing.JComboBox<>();
+        cmbModel = new javax.swing.JComboBox<>();
+        txtStyle = new javax.swing.JTextField();
+        fmtVin = new javax.swing.JFormattedTextField();
+        cmbEColor = new javax.swing.JComboBox<>();
+        spnMiles = new javax.swing.JSpinner();
+        spnPrice = new javax.swing.JSpinner();
+        rbtnAut = new javax.swing.JRadioButton();
+        btnMan = new javax.swing.JRadioButton();
+        txtEngine = new javax.swing.JTextField();
+        txtImage = new javax.swing.JTextField();
+        cmbStatus = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox<>();
+        cmbIColor = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtStock = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(366, 490));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setText("Year");
@@ -160,19 +314,18 @@ public class dialogVehicle extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         getContentPane().add(jLabel12, gridBagConstraints);
 
-        jButton1.setText("jButton1");
+        btnSave.setText("SAVE");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 16;
-        getContentPane().add(jButton1, gridBagConstraints);
+        getContentPane().add(btnSave, gridBagConstraints);
 
-        jButton2.setText("jButton2");
+        btnCancel.setText("CANCEL");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 16;
-        getContentPane().add(jButton2, gridBagConstraints);
+        getContentPane().add(btnCancel, gridBagConstraints);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -180,9 +333,8 @@ public class dialogVehicle extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jComboBox1, gridBagConstraints);
+        getContentPane().add(cmbYear, gridBagConstraints);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -190,9 +342,8 @@ public class dialogVehicle extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jComboBox2, gridBagConstraints);
+        getContentPane().add(cmbMake, gridBagConstraints);
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
@@ -200,9 +351,7 @@ public class dialogVehicle extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jComboBox3, gridBagConstraints);
-
-        jTextField1.setText("jTextField1");
+        getContentPane().add(cmbModel, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -210,9 +359,7 @@ public class dialogVehicle extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jTextField1, gridBagConstraints);
-
-        jFormattedTextField1.setText("jFormattedTextField1");
+        getContentPane().add(txtStyle, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
@@ -220,9 +367,8 @@ public class dialogVehicle extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jFormattedTextField1, gridBagConstraints);
+        getContentPane().add(fmtVin, gridBagConstraints);
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
@@ -230,7 +376,7 @@ public class dialogVehicle extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jComboBox4, gridBagConstraints);
+        getContentPane().add(cmbEColor, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 8;
@@ -238,7 +384,7 @@ public class dialogVehicle extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jSpinner1, gridBagConstraints);
+        getContentPane().add(spnMiles, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 9;
@@ -246,21 +392,21 @@ public class dialogVehicle extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jSpinner2, gridBagConstraints);
+        getContentPane().add(spnPrice, gridBagConstraints);
 
-        jRadioButton1.setText("jRadioButton1");
+        btnGroupTransmission.add(rbtnAut);
+        rbtnAut.setText("AUTOMATIC");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 10;
-        getContentPane().add(jRadioButton1, gridBagConstraints);
+        getContentPane().add(rbtnAut, gridBagConstraints);
 
-        jRadioButton2.setText("jRadioButton2");
+        btnGroupTransmission.add(btnMan);
+        btnMan.setText("MANUAL");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 10;
-        getContentPane().add(jRadioButton2, gridBagConstraints);
-
-        jTextField2.setText("jTextField2");
+        getContentPane().add(btnMan, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 11;
@@ -268,9 +414,7 @@ public class dialogVehicle extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jTextField2, gridBagConstraints);
-
-        jTextField3.setText("jTextField3");
+        getContentPane().add(txtEngine, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 12;
@@ -278,9 +422,8 @@ public class dialogVehicle extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jTextField3, gridBagConstraints);
+        getContentPane().add(txtImage, gridBagConstraints);
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 13;
@@ -288,7 +431,7 @@ public class dialogVehicle extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jComboBox5, gridBagConstraints);
+        getContentPane().add(cmbStatus, gridBagConstraints);
 
         jLabel13.setText("Interior Color");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -298,7 +441,6 @@ public class dialogVehicle extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         getContentPane().add(jLabel13, gridBagConstraints);
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 7;
@@ -306,7 +448,7 @@ public class dialogVehicle extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jComboBox6, gridBagConstraints);
+        getContentPane().add(cmbIColor, gridBagConstraints);
 
         jLabel14.setText("Stock Number");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -316,17 +458,25 @@ public class dialogVehicle extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         getContentPane().add(jLabel14, gridBagConstraints);
 
-        jTextField4.setText("jTextField4");
+        txtStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtStockActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jTextField4, gridBagConstraints);
+        getContentPane().add(txtStock, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStockActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtStockActionPerformed
 
     /**
      * @param args the command line arguments
@@ -365,21 +515,24 @@ public class dialogVehicle extends javax.swing.JDialog {
                         System.exit(0);
                     }
                 });
+                
                 dialog.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JButton btnCancel;
+    private javax.swing.ButtonGroup btnGroupTransmission;
+    private javax.swing.JRadioButton btnMan;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JComboBox<String> cmbEColor;
+    private javax.swing.JComboBox<String> cmbIColor;
+    private javax.swing.JComboBox<String> cmbMake;
+    private javax.swing.JComboBox<String> cmbModel;
+    private javax.swing.JComboBox<String> cmbStatus;
+    private javax.swing.JComboBox<String> cmbYear;
+    private javax.swing.JFormattedTextField fmtVin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -394,13 +547,12 @@ public class dialogVehicle extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JRadioButton rbtnAut;
+    private javax.swing.JSpinner spnMiles;
+    private javax.swing.JSpinner spnPrice;
+    private javax.swing.JTextField txtEngine;
+    private javax.swing.JTextField txtImage;
+    private javax.swing.JTextField txtStock;
+    private javax.swing.JTextField txtStyle;
     // End of variables declaration//GEN-END:variables
 }
