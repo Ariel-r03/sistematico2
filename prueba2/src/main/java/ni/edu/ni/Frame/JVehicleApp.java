@@ -5,11 +5,22 @@
  */
 package ni.edu.ni.Frame;
 
+import java.awt.BorderLayout;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JComponent;
+import javax.swing.JDesktopPane;
+import ni.edu.ni.Frame.Controllers.PnlVehicleController;
+import ni.edu.ni.Frame.panels.PnlVehicle;
+
 /**
  *
  * @author JADPA18
  */
 public class JVehicleApp extends javax.swing.JFrame {
+    private PnlVehicle pnlVehicle;
+    private PnlVehicleController pnlVehicleController;
 
     /**
      * Creates new form j
@@ -73,7 +84,16 @@ public class JVehicleApp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mtNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mtNewActionPerformed
-        // TODO add your handling code here:
+        if(pnlVehicle == null){
+            pnlVehicle = new PnlVehicle();
+            try {
+                pnlVehicleController = new PnlVehicleController(pnlVehicle);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(JVehicleApp.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        pnlVehicle.setVisible(true);
+//        addComponent(pnlVehicle);
     }//GEN-LAST:event_mtNewActionPerformed
 
     /**
@@ -110,6 +130,13 @@ public class JVehicleApp extends javax.swing.JFrame {
                 new JVehicleApp().setVisible(true);
             }
         });
+    }
+    
+    private void addComponent(JDesktopPane component) {
+        deskPane.removeAll();        
+        deskPane.add(component, BorderLayout.CENTER);
+        validate();
+        repaint();
     }
     
     

@@ -9,10 +9,9 @@ package ni.edu.ni.pojo;
 
 /**
  *
- * @author Pablo
+ * @author yasser.membreno
  */
 public class Vehicle {
-    // propiedades
     private int stockNumber;//20
     private int year;//4
     private String make;//30
@@ -27,20 +26,38 @@ public class Vehicle {
     private String engine;//50
     private String image;//100
     private String status;//20
+    //private int records;//4
     
-    public enum Transmission
-    {
+    public enum Transmission{
         AUTOMATIC, MANUAL
     }
-    public Vehicle(){}
+
+    public Vehicle() {
+    }
     
-    // constructor
     public Vehicle(int stockNumber, int year, String make, String model, Transmission transmission, String status) {
         this.stockNumber = stockNumber;
         this.year = year;
         this.make = make;
         this.model = model;
         this.transmission = transmission;
+        this.status = status;
+    }
+
+    public Vehicle(int stockNumber, int year, String make, String model, String style, String vin, String exteriorColor, String interiorColor, String miles, float price, Transmission transmission, String engine, String image, String status) {
+        this.stockNumber = stockNumber;
+        this.year = year;
+        this.make = make;
+        this.model = model;
+        this.style = style;
+        this.vin = vin;
+        this.exteriorColor = exteriorColor;
+        this.interiorColor = interiorColor;
+        this.miles = miles;
+        this.price = price;
+        this.transmission = transmission;
+        this.engine = engine;
+        this.image = image;
         this.status = status;
     }
 
@@ -55,6 +72,24 @@ public class Vehicle {
     public int getYear() {
         return year;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+//    public int getRecords() {
+//        return records;
+//    }
+//
+//    public void setRecords(int records) {
+//        this.records = records;
+//    }
+    
+    
 
     public void setYear(int year) {
         this.year = year;
@@ -148,14 +183,13 @@ public class Vehicle {
         this.image = image;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+    @Override
+    public String toString() {
+        return "Vehicle{" + "stockNumber=" + stockNumber + ", year=" + year + ", make=" + make + ", model=" + model + ", style=" + style + ", vin=" + vin + ", exteriorColor=" + exteriorColor + ", interiorColor=" + interiorColor + ", miles=" + miles + ", price=" + price + ", transmission=" + transmission + ", engine=" + engine + ", image=" + image + ", status=" + status + '}';
     }
     
     
-       
+    
+    
 }
+
