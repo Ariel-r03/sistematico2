@@ -6,6 +6,7 @@
 package ni.edu.ni.Frame;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,6 +14,7 @@ import javax.swing.JDesktopPane;
 import ni.edu.ni.Frame.Controllers.PnlVehicleController;
 import ni.edu.ni.Frame.Controllers.dialogVehicleController;
 import ni.edu.ni.Frame.panels.PnlVehicle;
+import ni.edu.ni.Frame.panels.PnlVehicleShowInfo;
 import ni.edu.ni.Frame.panels.dialogVehicle;
 
 /**
@@ -23,9 +25,10 @@ public class JVehicleApp extends javax.swing.JFrame {
     //dialogVehicle vehicleD;
     private PnlVehicle pnlVehicle;
     private PnlVehicleController pnlVehicleController;
-    
     private dialogVehicle DVehicle;
     private dialogVehicleController DVehicle_Controller;
+    private JIntFrame jIntFrame;
+    private PnlVehicleShowInfo pnlVShowInfo;
     /**
      * Creates new form j
      */
@@ -59,12 +62,17 @@ public class JVehicleApp extends javax.swing.JFrame {
         );
         deskPaneLayout.setVerticalGroup(
             deskPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGap(0, 277, Short.MAX_VALUE)
         );
 
         getContentPane().add(deskPane, java.awt.BorderLayout.CENTER);
 
         jMenu1.setText("Options");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
 
         mtNew.setText("New");
         mtNew.addActionListener(new java.awt.event.ActionListener() {
@@ -75,6 +83,11 @@ public class JVehicleApp extends javax.swing.JFrame {
         jMenu1.add(mtNew);
 
         mtView.setText("View");
+        mtView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mtViewActionPerformed(evt);
+            }
+        });
         jMenu1.add(mtView);
 
         mtExit.setText("Exit");
@@ -87,6 +100,10 @@ public class JVehicleApp extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
     private void mtNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mtNewActionPerformed
         /*if(pnlVehicle == null){
             pnlVehicle = new PnlVehicle();
@@ -97,24 +114,39 @@ public class JVehicleApp extends javax.swing.JFrame {
             }
         }
         pnlVehicle.setVisible(true);
-//        addComponent(pnlVehicle); ESTO NO VA
+        //        addComponent(pnlVehicle); ESTO NO VA
         */
-        // El true sirve para que no permita acceder al frame 
+        // El true sirve para que no permita acceder al frame
         // = new dialogVehicle(this, true);
-        
+
         if (DVehicle == null)
         {
             DVehicle = new dialogVehicle(this, true);
-            
+
             try {
                 DVehicle_Controller = new dialogVehicleController(DVehicle);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(JVehicleApp.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         }
         DVehicle.setVisible(true);
     }//GEN-LAST:event_mtNewActionPerformed
+
+    private void mtViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mtViewActionPerformed
+        // TODO add your handling code here:
+        jIntFrame= new JIntFrame();
+        //pnlVShowInfo= new PnlVehicleShowInfo();
+        
+        //jIntFrame.add(pnlVShowInfo);
+//        jIntFrame.setSize(300, 200);
+        jIntFrame.setResizable(true);
+        jIntFrame.setClosable(true);
+        deskPane.add(jIntFrame);
+        jIntFrame.setVisible(true);
+
+        
+    }//GEN-LAST:event_mtViewActionPerformed
 
     /**
      * @param args the command line arguments

@@ -5,6 +5,11 @@
  */
 package ni.edu.ni.Frame;
 
+import java.awt.BorderLayout;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JPanel;
 import ni.edu.ni.Frame.Controllers.PnlVehicleShowController;
 import ni.edu.ni.Frame.panels.PnlVehicleShowInfo;
 
@@ -20,13 +25,24 @@ private PnlVehicleShowController pnlVehicleShowController;
      */
     public JIntFrame() {
         initComponents();
-        
+        holis();
     }
     
     public void holis(){
-    if(jPanelViews==null){
-        
-    }
+    jPanelViews.removeAll();
+    if(pVShowInfo==null){
+        pVShowInfo= new PnlVehicleShowInfo();
+        try {
+            pnlVehicleShowController= new PnlVehicleShowController(pVShowInfo);
+        } catch (IOException ex) {
+            Logger.getLogger(JIntFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       } 
+   
+    jPanelViews.add(pVShowInfo);
+    validate();
+    repaint();
+    
 }
 
     /**
