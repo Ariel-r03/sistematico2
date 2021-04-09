@@ -35,6 +35,7 @@ import ni.edu.ni.Frame.dao.daoImpl.JsonVehicleImpl;
 import ni.edu.ni.Frame.panels.dialogVehicle;
 import ni.edu.ni.pojo.Vehicle;
 import ni.edu.ni.pojo.VehicleSubModel;
+import ni.edu.ni.Frame.panels.DCreateV;
 /**
  *
  * @author JADPA03
@@ -53,8 +54,10 @@ public class dialogVehicleController {
     private JFileChooser fileChooser;
     private Border stockBorder;
 
-    public dialogVehicleController(dialogVehicle DVehicle) throws FileNotFoundException {
-        this.DVehicle = DVehicle;
+    private DCreateV dCreate;
+    
+    public dialogVehicleController(DCreateV DVehicle) throws FileNotFoundException {
+        this.dCreate = DVehicle;
         initComponent();
     }
     
@@ -92,22 +95,23 @@ public class dialogVehicleController {
         cmbModelIColor = new DefaultComboBoxModel(colors.toArray());
         cmbStatus = new DefaultComboBoxModel(status.toArray());
         
-        DVehicle.getCmbMake().setModel(cmbModelMake);
-        DVehicle.getCmbModel().setModel(cmbModelModel);
-        DVehicle.getCmbYear().setModel(cmbModelYear);
-        DVehicle.getCmbEColor().setModel(cmbModelEColor);
-        DVehicle.getCmbIColor().setModel(cmbModelIColor);
-        DVehicle.getCmbStatus().setModel(cmbStatus);
+        dCreate.getCmbMake().setModel(cmbModelMake);
+        dCreate.getCmbModel().setModel(cmbModelModel);
+        dCreate.getCmbYear().setModel(cmbModelYear);
+        dCreate.getCmbEColor().setModel(cmbModelEColor);
+        dCreate.getCmbIColor().setModel(cmbModelIColor);
+        dCreate.getCmbStatus().setModel(cmbStatus);
         
         
-        DVehicle.getBtnSave().addActionListener((e)->
+        dCreate.getBtnSave().addActionListener((e)->
         {
             try
             {
                 btnSaveActionListener(e);
             } catch (Exception ex)
             {
-                
+                Logger.getLogger(PnlVehicleController.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("No se puede");
             }
         }
         );
@@ -121,26 +125,28 @@ public class dialogVehicleController {
         float price;
         Vehicle.Transmission transmission = Vehicle.Transmission.AUTOMATIC;
         
-        if (DVehicle.getTxtStock().getText().isEmpty())
+        if (dCreate.getTxtStock().getText().isEmpty())
         {
             // joption de esto 
             return;
         }
         
-        stock = Integer.parseInt(DVehicle.getTxtStock().getText());
-        year = Integer.parseInt(DVehicle.getCmbYear().getSelectedItem().toString());
-        make = DVehicle.getCmbMake().getSelectedItem().toString();
-        model = DVehicle.getCmbModel().getSelectedItem().toString();
-        style = DVehicle.getTxtStyle().getText();
-        vin = DVehicle.getFmtVin().getText();
-        eColor = DVehicle.getCmbEColor().getSelectedItem().toString();
-        iColor = DVehicle.getCmbIColor().getSelectedItem().toString();
-        miles = DVehicle.getSpnMiles().getModel().getValue().toString();
-        price = Float.parseFloat(DVehicle.getSpnPrice().getModel().getValue().toString());
-        engine = DVehicle.getTxtEngine().getText();
-        image = DVehicle.getTxtImage().getText();
-        status = DVehicle.getCmbStatus().getSelectedItem().toString();
-        transmission = DVehicle.getRbtnAut().isSelected() ? transmission : Vehicle.Transmission.MANUAL;
+        stock = Integer.parseInt(dCreate.getTxtStock().getText());
+        year = Integer.parseInt(dCreate.getCmbYear().getSelectedItem().toString());
+        make = dCreate.getCmbMake().getSelectedItem().toString();
+        model = dCreate.getCmbModel().getSelectedItem().toString();
+        style = dCreate.getTxtStyle().getText();
+        vin = dCreate.getFmtVIN().getText();  
+        eColor = dCreate.getCmbEColor().getSelectedItem().toString();
+        iColor = dCreate.getCmbIColor().getSelectedItem().toString();
+        miles = dCreate.getSpnMiles().getModel().getValue().toString();
+        price = Float.parseFloat(dCreate.getSpnPrice().getModel().getValue().toString());
+        engine = dCreate.getTxtEngine().getText();
+        image = dCreate.getTxtImage().getText();
+        status = dCreate.getCmbStatus().getSelectedItem().toString();
+        transmission = dCreate.getRbtnAut().isSelected() ? transmission : Vehicle.Transmission.MANUAL;
+        
+        System.out.println(eColor);
         
         Vehicle v = new Vehicle(stock, year, make, model, 
                 style, vin, eColor, iColor, miles, price, transmission, engine, image, status);

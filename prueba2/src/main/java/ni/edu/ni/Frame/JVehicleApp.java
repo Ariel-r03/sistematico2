@@ -6,7 +6,6 @@
 package ni.edu.ni.Frame;
 
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,6 +15,8 @@ import ni.edu.ni.Frame.Controllers.dialogVehicleController;
 import ni.edu.ni.Frame.panels.PnlVehicle;
 import ni.edu.ni.Frame.panels.PnlVehicleShowInfo;
 import ni.edu.ni.Frame.panels.dialogVehicle;
+import ni.edu.ni.views.DCreate;
+import ni.edu.ni.Frame.panels.DCreateV;
 
 /**
  *
@@ -29,6 +30,10 @@ public class JVehicleApp extends javax.swing.JFrame {
     private dialogVehicleController DVehicle_Controller;
     private JIntFrame jIntFrame;
     private PnlVehicleShowInfo pnlVShowInfo;
+    private DCreate DialogCreate;
+    
+    private DCreateV dCreate;
+
     /**
      * Creates new form j
      */
@@ -91,6 +96,11 @@ public class JVehicleApp extends javax.swing.JFrame {
         jMenu1.add(mtView);
 
         mtExit.setText("Exit");
+        mtExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mtExitActionPerformed(evt);
+            }
+        });
         jMenu1.add(mtExit);
 
         jMenuBar1.add(jMenu1);
@@ -105,37 +115,29 @@ public class JVehicleApp extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void mtNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mtNewActionPerformed
-        /*if(pnlVehicle == null){
-            pnlVehicle = new PnlVehicle();
-            try {
-                pnlVehicleController = new PnlVehicleController(pnlVehicle);
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(JVehicleApp.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        pnlVehicle.setVisible(true);
-        //        addComponent(pnlVehicle); ESTO NO VA
-        */
-        // El true sirve para que no permita acceder al frame
-        // = new dialogVehicle(this, true);
-
-        if (DVehicle == null)
+       // aqui implementamos, de esta manera deberia de ser maso en el views, ok?
+        if (dCreate == null)
         {
-            DVehicle = new dialogVehicle(this, true);
+            dCreate = new DCreateV(this, true);
 
             try {
-                DVehicle_Controller = new dialogVehicleController(DVehicle);
+                DVehicle_Controller = new dialogVehicleController(dCreate);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(JVehicleApp.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }
-        DVehicle.setVisible(true);
+        dCreate.setVisible(true);
+       
+//        if (DialogCreate == null)
+//        {
+//            DialogCreate = new DCreate(this, true);
+//        }
     }//GEN-LAST:event_mtNewActionPerformed
 
     private void mtViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mtViewActionPerformed
         // TODO add your handling code here:
-        jIntFrame= new JIntFrame();
+        /*jIntFrame= new JIntFrame();
         //pnlVShowInfo= new PnlVehicleShowInfo();
         
         //jIntFrame.add(pnlVShowInfo);
@@ -143,10 +145,23 @@ public class JVehicleApp extends javax.swing.JFrame {
         jIntFrame.setResizable(true);
         jIntFrame.setClosable(true);
         deskPane.add(jIntFrame);
-        jIntFrame.setVisible(true);
-
+        jIntFrame.setVisible(true);*/
+        deskPane.removeAll();
+        if (pnlVShowInfo == null)
+        {
+            pnlVShowInfo = new PnlVehicleShowInfo();
+        }
+        deskPane.add(pnlVShowInfo);
+        pnlVShowInfo.setVisible(true);
+        validate();
+        repaint();
         
     }//GEN-LAST:event_mtViewActionPerformed
+
+    private void mtExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mtExitActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_mtExitActionPerformed
 
     /**
      * @param args the command line arguments

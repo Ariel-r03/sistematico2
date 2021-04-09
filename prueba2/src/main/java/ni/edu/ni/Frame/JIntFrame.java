@@ -39,7 +39,7 @@ private PnlVehicleShowController pnlVehicleShowController;
         }
        } 
    
-    jPanelViews.add(pVShowInfo);
+    jPanelViews.add(pVShowInfo, BorderLayout.CENTER);
     validate();
     repaint();
     

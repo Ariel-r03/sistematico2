@@ -17,16 +17,16 @@ import javax.swing.JTextField;
  *
  * @author Pablo
  */
-public class dialogVehicle extends javax.swing.JDialog {
-
+public class DCreateV extends javax.swing.JDialog {
+    // panel para crear
     /**
-     * Creates new form dialogVehicle
+     * Creates new form DCreateV
      */
-    public dialogVehicle(java.awt.Frame parent, boolean modal) {
+    public DCreateV(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
-    //  GENERAR GETTERS Y SETTERS
+
     public JButton getBtnCancel() {
         return btnCancel;
     }
@@ -41,14 +41,6 @@ public class dialogVehicle extends javax.swing.JDialog {
 
     public void setBtnGroupTransmission(ButtonGroup btnGroupTransmission) {
         this.btnGroupTransmission = btnGroupTransmission;
-    }
-
-    public JRadioButton getBtnMan() {
-        return btnMan;
-    }
-
-    public void setBtnMan(JRadioButton btnMan) {
-        this.btnMan = btnMan;
     }
 
     public JButton getBtnSave() {
@@ -107,12 +99,20 @@ public class dialogVehicle extends javax.swing.JDialog {
         this.cmbYear = cmbYear;
     }
 
-    public JFormattedTextField getFmtVin() {
-        return fmtVin;
+    public JFormattedTextField getFmtVIN() {
+        return fmtVIN;
     }
 
-    public void setFmtVin(JFormattedTextField fmtVin) {
-        this.fmtVin = fmtVin;
+    public void setFmtVIN(JFormattedTextField fmtVIN) {
+        this.fmtVIN = fmtVIN;
+    }
+
+    public JRadioButton getRbtMan() {
+        return rbtMan;
+    }
+
+    public void setRbtMan(JRadioButton rbtMan) {
+        this.rbtMan = rbtMan;
     }
 
     public JRadioButton getRbtnAut() {
@@ -170,7 +170,7 @@ public class dialogVehicle extends javax.swing.JDialog {
     public void setTxtStyle(JTextField txtStyle) {
         this.txtStyle = txtStyle;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -182,319 +182,264 @@ public class dialogVehicle extends javax.swing.JDialog {
         java.awt.GridBagConstraints gridBagConstraints;
 
         btnGroupTransmission = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         btnSave = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        txtStock = new javax.swing.JTextField();
         cmbYear = new javax.swing.JComboBox<>();
         cmbMake = new javax.swing.JComboBox<>();
         cmbModel = new javax.swing.JComboBox<>();
         txtStyle = new javax.swing.JTextField();
-        fmtVin = new javax.swing.JFormattedTextField();
+        fmtVIN = new javax.swing.JFormattedTextField();
         cmbEColor = new javax.swing.JComboBox<>();
+        cmbIColor = new javax.swing.JComboBox<>();
         spnMiles = new javax.swing.JSpinner();
         spnPrice = new javax.swing.JSpinner();
         rbtnAut = new javax.swing.JRadioButton();
-        btnMan = new javax.swing.JRadioButton();
+        rbtMan = new javax.swing.JRadioButton();
         txtEngine = new javax.swing.JTextField();
         txtImage = new javax.swing.JTextField();
         cmbStatus = new javax.swing.JComboBox<>();
-        jLabel13 = new javax.swing.JLabel();
-        cmbIColor = new javax.swing.JComboBox<>();
-        jLabel14 = new javax.swing.JLabel();
-        txtStock = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(366, 490));
-        getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setText("Year");
+        btnSave.setText("Save");
+        jPanel1.add(btnSave);
+
+        btnCancel.setText("Cancel");
+        jPanel1.add(btnCancel);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
+
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        jLabel15.setText("Stock Number");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        jPanel2.add(jLabel15, gridBagConstraints);
+
+        jLabel16.setText("Year");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jLabel1, gridBagConstraints);
+        jPanel2.add(jLabel16, gridBagConstraints);
 
-        jLabel2.setText("Make");
+        jLabel17.setText("Make");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jLabel2, gridBagConstraints);
+        jPanel2.add(jLabel17, gridBagConstraints);
 
-        jLabel3.setText("Model");
+        jLabel18.setText("Model");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jLabel3, gridBagConstraints);
+        jPanel2.add(jLabel18, gridBagConstraints);
 
-        jLabel4.setText("Style");
+        jLabel19.setText("Style");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jLabel4, gridBagConstraints);
+        jPanel2.add(jLabel19, gridBagConstraints);
 
-        jLabel5.setText("VIN");
+        jLabel20.setText("VIN");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jLabel5, gridBagConstraints);
+        jPanel2.add(jLabel20, gridBagConstraints);
 
-        jLabel6.setText("Exterior Color");
+        jLabel21.setText("Exterior Color");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jLabel6, gridBagConstraints);
+        jPanel2.add(jLabel21, gridBagConstraints);
 
-        jLabel7.setText("Miles");
+        jLabel22.setText("Interior Color");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        jPanel2.add(jLabel22, gridBagConstraints);
+
+        jLabel23.setText("Miles");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jLabel7, gridBagConstraints);
+        jPanel2.add(jLabel23, gridBagConstraints);
 
-        jLabel8.setText("Price");
+        jLabel24.setText("Price");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 9;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jLabel8, gridBagConstraints);
+        jPanel2.add(jLabel24, gridBagConstraints);
 
-        jLabel9.setText("Transmission");
+        jLabel25.setText("Transmission");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 10;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jLabel9, gridBagConstraints);
+        jPanel2.add(jLabel25, gridBagConstraints);
 
-        jLabel10.setText("Engine");
+        jLabel26.setText("Engine");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 11;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jLabel10, gridBagConstraints);
+        jPanel2.add(jLabel26, gridBagConstraints);
 
-        jLabel11.setText("Image Path");
+        jLabel27.setText("Image Path");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 12;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jLabel11, gridBagConstraints);
+        jPanel2.add(jLabel27, gridBagConstraints);
 
-        jLabel12.setText("Status");
+        jLabel28.setText("Status");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 13;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jLabel12, gridBagConstraints);
-
-        btnSave.setText("SAVE");
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
+        jPanel2.add(jLabel28, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 16;
-        getContentPane().add(btnSave, gridBagConstraints);
-
-        btnCancel.setText("CANCEL");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 16;
-        getContentPane().add(btnCancel, gridBagConstraints);
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        jPanel2.add(txtStock, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(cmbYear, gridBagConstraints);
+        jPanel2.add(cmbYear, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(cmbMake, gridBagConstraints);
+        jPanel2.add(cmbMake, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(cmbModel, gridBagConstraints);
+        jPanel2.add(cmbModel, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(txtStyle, gridBagConstraints);
+        jPanel2.add(txtStyle, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(fmtVin, gridBagConstraints);
+        jPanel2.add(fmtVIN, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(cmbEColor, gridBagConstraints);
+        jPanel2.add(cmbEColor, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        jPanel2.add(cmbIColor, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(spnMiles, gridBagConstraints);
+        jPanel2.add(spnMiles, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 9;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(spnPrice, gridBagConstraints);
+        jPanel2.add(spnPrice, gridBagConstraints);
 
         btnGroupTransmission.add(rbtnAut);
         rbtnAut.setText("AUTOMATIC");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 10;
-        getContentPane().add(rbtnAut, gridBagConstraints);
+        jPanel2.add(rbtnAut, gridBagConstraints);
 
-        btnGroupTransmission.add(btnMan);
-        btnMan.setText("MANUAL");
+        btnGroupTransmission.add(rbtMan);
+        rbtMan.setText("MANUAL");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 10;
-        getContentPane().add(btnMan, gridBagConstraints);
+        jPanel2.add(rbtMan, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 11;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(txtEngine, gridBagConstraints);
+        jPanel2.add(txtEngine, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 12;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(txtImage, gridBagConstraints);
+        jPanel2.add(txtImage, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 13;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 2;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(cmbStatus, gridBagConstraints);
+        jPanel2.add(cmbStatus, gridBagConstraints);
 
-        jLabel13.setText("Interior Color");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jLabel13, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 2;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(cmbIColor, gridBagConstraints);
-
-        jLabel14.setText("Stock Number");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(jLabel14, gridBagConstraints);
-
-        txtStock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtStockActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        getContentPane().add(txtStock, gridBagConstraints);
+        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStockActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtStockActionPerformed
-
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSaveActionPerformed
-
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -513,27 +458,26 @@ public class dialogVehicle extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(dialogVehicle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DCreateV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(dialogVehicle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DCreateV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(dialogVehicle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DCreateV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(dialogVehicle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DCreateV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                dialogVehicle dialog = new dialogVehicle(new javax.swing.JFrame(), true);
+                DCreateV dialog = new DCreateV(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);
                     }
                 });
-                
                 dialog.setVisible(true);
             }
         });
@@ -542,7 +486,6 @@ public class dialogVehicle extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.ButtonGroup btnGroupTransmission;
-    private javax.swing.JRadioButton btnMan;
     private javax.swing.JButton btnSave;
     private javax.swing.JComboBox<String> cmbEColor;
     private javax.swing.JComboBox<String> cmbIColor;
@@ -550,21 +493,24 @@ public class dialogVehicle extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> cmbModel;
     private javax.swing.JComboBox<String> cmbStatus;
     private javax.swing.JComboBox<String> cmbYear;
-    private javax.swing.JFormattedTextField fmtVin;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JFormattedTextField fmtVIN;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JRadioButton rbtMan;
     private javax.swing.JRadioButton rbtnAut;
     private javax.swing.JSpinner spnMiles;
     private javax.swing.JSpinner spnPrice;

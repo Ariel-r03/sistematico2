@@ -7,6 +7,8 @@ package ni.edu.ni.views;
 
 import java.awt.BorderLayout;
 import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import ni.edu.ni.Frame.Controllers.PnlVehicleController;
 import ni.edu.ni.Frame.panels.PnlVehicle;
 
@@ -23,6 +25,12 @@ public class DCreate extends javax.swing.JDialog {
     public DCreate(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        try {
+            init();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(DCreate.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     private void init() throws FileNotFoundException
     {

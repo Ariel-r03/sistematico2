@@ -42,14 +42,27 @@ public class JsonVehicleImpl extends RandomTemplate implements VehicleDao {
     @Override
     public void create(Vehicle t) throws IOException {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        getCustomRandom().getRafH().seek(0);
-        
+         getCustomRandom().getRafH().seek(0);
         int n = getCustomRandom().getRafH().readInt();
-        int k = getCustomRandom().getRafD().readInt();
+        int k = getCustomRandom().getRafH().readInt();
+                
+        long posD = k*SIZE;        
+        getCustomRandom().getRafD().seek(posD);
         
-        long posD = k * SIZE;
-        getCustomRandom().getRafD().writeInt(++k);
-        getCustomRandom().getRafH().writeUTF(gson.toJson(t));
+        getCustomRandom().getRafD().writeInt(++k);//id
+        getCustomRandom().getRafD().writeUTF(gson.toJson(t));//Vehicle json
+        
+        long posH = 8 + (n*8);
+        getCustomRandom().getRafH().seek(posH);
+        
+        getCustomRandom().getRafH().writeInt(k);
+        getCustomRandom().getRafH().writeInt(t.getStockNumber());
+        
+        getCustomRandom().getRafH().seek(0);
+        getCustomRandom().getRafH().writeInt(++n);
+        getCustomRandom().getRafH().writeInt(k);
+        
+        close();
     }
 
     public int update(Vehicle t) throws IOException {
@@ -63,7 +76,31 @@ public class JsonVehicleImpl extends RandomTemplate implements VehicleDao {
 
     @Override
     public Collection<Vehicle> getAll() throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Vehicle> vehicles = new ArrayList<>();
+        Vehicle vehicle = null;
+        
+        getCustomRandom().getRafH().seek(0);
+        int n = getCustomRandom().getRafH().readInt();        
+        
+        for(int i = 0; i < n; i++){
+            long posH = 8 + (i*8);
+            getCustomRandom().getRafH().seek(posH);
+            
+            int id = getCustomRandom().getRafH().readInt();
+            
+            if(id <= 0){
+                continue;
+            }
+            
+            long posD = 4 + (id - 1)*SIZE;
+            getCustomRandom().getRafD().seek(posD);
+            vehicle = gson.fromJson(getCustomRandom().getRafD().readUTF(), Vehicle.class);
+            
+            vehicles.add(vehicle);            
+        }
+        
+        return vehicles;
     }
     
     

@@ -5,24 +5,37 @@
  */
 package ni.edu.ni.views;
 
+import java.io.IOException;
+import ni.edu.ni.Frame.Controllers.PnlVehicleShowController;
+import ni.edu.ni.Frame.panels.PnlVehicleShowInfo;
+
 /**
  *
  * @author Pablo
  */
 public class IFSearch extends javax.swing.JInternalFrame {
     // agregar showall
+    PnlVehicleShowInfo pnlShowInfo;
+    PnlVehicleShowController pnlShowInfoController;
     // agregar showall control;
     /**
      * Creates new form IFSearch
      */
-    public IFSearch() {
+    public IFSearch() throws IOException {
         initComponents();
         init();
     }
-    private void init()
+    private void init() throws IOException
     {
         PrinPnl.removeAll();
         // la cosa del if de que si es vacio y ese mate ya tu sabe
+        if (pnlShowInfo == null)
+        {
+            pnlShowInfo = new PnlVehicleShowInfo();
+            pnlShowInfoController = new PnlVehicleShowController(pnlShowInfo);
+            validate();
+            repaint();
+        }
         // al final pones validate();
         // y el repaint();
     }
