@@ -14,7 +14,6 @@ import ni.edu.ni.Frame.Controllers.PnlVehicleController;
 import ni.edu.ni.Frame.Controllers.dialogVehicleController;
 import ni.edu.ni.Frame.panels.PnlVehicle;
 import ni.edu.ni.Frame.panels.PnlVehicleShowInfo;
-import ni.edu.ni.Frame.panels.dialogVehicle;
 import ni.edu.ni.views.DCreate;
 import ni.edu.ni.Frame.panels.DCreateV;
 
@@ -26,7 +25,6 @@ public class JVehicleApp extends javax.swing.JFrame {
     //dialogVehicle vehicleD;
     private PnlVehicle pnlVehicle;
     private PnlVehicleController pnlVehicleController;
-    private dialogVehicle DVehicle;
     private dialogVehicleController DVehicle_Controller;
     private JIntFrame jIntFrame;
     private PnlVehicleShowInfo pnlVShowInfo;
@@ -137,24 +135,14 @@ public class JVehicleApp extends javax.swing.JFrame {
 
     private void mtViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mtViewActionPerformed
         // TODO add your handling code here:
-        /*jIntFrame= new JIntFrame();
-        //pnlVShowInfo= new PnlVehicleShowInfo();
-        
-        //jIntFrame.add(pnlVShowInfo);
-//        jIntFrame.setSize(300, 200);
-        jIntFrame.setResizable(true);
+        jIntFrame= new JIntFrame();
+       // jIntFrame.setSize( 1365,680 );
+        //jIntFrame.setResizable(true);
+        jIntFrame.setMaximizable(true);
         jIntFrame.setClosable(true);
         deskPane.add(jIntFrame);
-        jIntFrame.setVisible(true);*/
-        deskPane.removeAll();
-        if (pnlVShowInfo == null)
-        {
-            pnlVShowInfo = new PnlVehicleShowInfo();
-        }
-        deskPane.add(pnlVShowInfo);
-        pnlVShowInfo.setVisible(true);
-        validate();
-        repaint();
+        jIntFrame.setVisible(true);
+
         
     }//GEN-LAST:event_mtViewActionPerformed
 

@@ -32,7 +32,7 @@ import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import ni.edu.ni.Frame.dao.daoImpl.JsonVehicleImpl;
-import ni.edu.ni.Frame.panels.dialogVehicle;
+
 import ni.edu.ni.pojo.Vehicle;
 import ni.edu.ni.pojo.VehicleSubModel;
 import ni.edu.ni.Frame.panels.DCreateV;
@@ -42,7 +42,6 @@ import ni.edu.ni.Frame.panels.DCreateV;
  */
 public class dialogVehicleController {
     private Gson gson;
-    private dialogVehicle DVehicle;
     private JsonVehicleImpl jvdao;
     private List<VehicleSubModel> vehicleSubModels;
     private DefaultComboBoxModel cmbModelMake;

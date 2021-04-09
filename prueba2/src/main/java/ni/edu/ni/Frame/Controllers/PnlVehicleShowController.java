@@ -49,41 +49,6 @@ public class PnlVehicleShowController {
     {
         model = (DefaultTableModel) pnlVShowInfo.getTableInfo().getModel();
         jvdao = new JsonVehicleImpl();
-        
-//        pnlVShowInfo.getBtnShowAll().addActionListener((e) ->{
-//            try {
-//                btnShowAllActionListener(e);
-//            } catch (IOException ex) {
-//                Logger.getLogger(PnlVehicleShowController.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        });
-        // Obtener info desde el jtextfield
-        pnlVShowInfo.getTextSearch().addKeyListener(new KeyAdapter()
-        {
-            public void keyReleased(final KeyEvent e)
-            {
-                TableRowSorter TFilter = new TableRowSorter(pnlVShowInfo.getTableInfo().getModel());
-                String s = pnlVShowInfo.getTextSearch().getText();
-                
-                pnlVShowInfo.getTextSearch().setText(s);
-                
-                FilterTabe(pnlVShowInfo.getCmbSearch().getSelectedIndex(), TFilter);
-            }
-        });
-    }
-    
-    
-    // Funcion filtrar
-    private void FilterTabe(int a, TableRowSorter filter)
-    {
-        filter.setRowFilter(RowFilter.regexFilter(pnlVShowInfo.getTextSearch().getText(), a));
-        pnlVShowInfo.getTableInfo().setRowSorter(filter);
-    } 
-    
-    // btn ShowAllActionListener
-    private void btnShowAllActionListener(ActionEvent e) throws IOException
-    {
-        // Creamos una lista con los objetos json casteandolos a lista tipo vehicle
         list = (List<Vehicle>) jvdao.getAll();
         while (list.size() > pnlVShowInfo.getTableInfo().getRowCount())
         {
@@ -106,8 +71,31 @@ public class PnlVehicleShowController {
             pnlVShowInfo.getTableInfo().setValueAt(list.get(i).getTransmission().toString(), i, 11);
             pnlVShowInfo.getTableInfo().setValueAt(list.get(i).getEngine(), i, 12);
             pnlVShowInfo.getTableInfo().setValueAt(list.get(i).getImage(), i, 13);
-             pnlVShowInfo.getTableInfo().setValueAt(list.get(i).getStatus(), i, 14);
+            pnlVShowInfo.getTableInfo().setValueAt(list.get(i).getStatus(), i, 14);
+        
         }
-//        pnlVShowInfo.getBtnShowAll().setText("Mostrar Todo");
+        // Obtener info desde el jtextfield
+        pnlVShowInfo.getTextSearch().addKeyListener(new KeyAdapter()
+        {
+            public void keyReleased(final KeyEvent e)
+            {
+                TableRowSorter TFilter = new TableRowSorter(pnlVShowInfo.getTableInfo().getModel());
+                String s = pnlVShowInfo.getTextSearch().getText();
+                
+                pnlVShowInfo.getTextSearch().setText(s);
+                
+                //FilterTabe(pnlVShowInfo.getCmbSearch().getSelectedIndex(), TFilter);
+            }
+        });
     }
+    
+    
+    // Funcion filtrar
+    private void FilterTabe(int a, TableRowSorter filter)
+    {
+        filter.setRowFilter(RowFilter.regexFilter(pnlVShowInfo.getTextSearch().getText(), a));
+        pnlVShowInfo.getTableInfo().setRowSorter(filter);
+    } 
+    
+    
 }

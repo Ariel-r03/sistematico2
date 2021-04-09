@@ -72,7 +72,6 @@ public class PnlVehicleShowInfo extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableInfo = new javax.swing.JTable();
-        jScrollBar1 = new javax.swing.JScrollBar();
         jPanel2 = new javax.swing.JPanel();
         CmbSearch = new javax.swing.JComboBox<>();
         TextSearch = new javax.swing.JTextField();
@@ -106,7 +105,6 @@ public class PnlVehicleShowInfo extends javax.swing.JPanel {
         jScrollPane1.setViewportView(TableInfo);
 
         jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
-        jPanel1.add(jScrollBar1, java.awt.BorderLayout.PAGE_END);
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -168,7 +166,6 @@ public class PnlVehicleShowInfo extends javax.swing.JPanel {
     private javax.swing.JTextField TextSearch;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
