@@ -13,6 +13,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -28,7 +30,7 @@ import ni.edu.ni.pojo.Vehicle;
  *
  * @author Pablo
  */
-public class PnlVehicleShowController {
+public class PnlVehicleShowController implements Observer {
     private PnlVehicleShowInfo pnlVShowInfo;
     // para el cmbList
     private final String PROPIERTIES[] = new String[]{"Nº Record","Stock number","Year", "Make", "Model", "Style", "VIN", "Exterior color", "Interior color", "Miles", "Price", "Transmission", "Engine",
@@ -84,7 +86,7 @@ public class PnlVehicleShowController {
                 
                 pnlVShowInfo.getTextSearch().setText(s);
                 
-                //FilterTabe(pnlVShowInfo.getCmbSearch().getSelectedIndex(), TFilter);
+                FilterTabe(pnlVShowInfo.getCmbSearch().getSelectedIndex(), TFilter);
             }
         });
     }
@@ -96,6 +98,19 @@ public class PnlVehicleShowController {
         filter.setRowFilter(RowFilter.regexFilter(pnlVShowInfo.getTextSearch().getText(), a));
         pnlVShowInfo.getTableInfo().setRowSorter(filter);
     } 
+
+    @Override
+    public void update(Observable o, Object o1) {
+//        try {
+//            initComponent();
+//        } catch (IOException ex) {
+//            Logger.getLogger(PnlVehicleShowController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+
+        System.out.println("Si funciona");
+    }
+
+    
     
     
 }

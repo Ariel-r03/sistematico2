@@ -8,20 +8,16 @@ package ni.edu.ni.Frame.Controllers;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,7 +26,6 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
 import ni.edu.ni.Frame.dao.daoImpl.JsonVehicleImpl;
 import ni.edu.ni.Frame.panels.PnlVehicle;
 import ni.edu.ni.pojo.Vehicle;
@@ -45,7 +40,7 @@ import ni.edu.ni.pojo.VehicleSubModel;
  *
  * @author Pablo
  */
-public class PnlVehicleController {
+public class PnlVehicleController extends Observable{
     private PnlVehicle pnlVehicle;
    // private PnlVehicleShowInfo pnlVShowInfo;
     private Gson gson;
@@ -59,6 +54,8 @@ public class PnlVehicleController {
     private DefaultComboBoxModel cmbStatus;
     private JFileChooser fileChooser;
     private Border stockBorder;
+    private Observable observador= new Observable();
+    private PnlVehicleShowController pnlVehicleShowController;
     
     public PnlVehicleController(PnlVehicle pnlVehicle) throws FileNotFoundException {
         this.pnlVehicle = pnlVehicle;
@@ -73,7 +70,7 @@ public class PnlVehicleController {
     private void initComponent() throws FileNotFoundException {
         jvdao = new JsonVehicleImpl();
         gson = new Gson();
-        
+       
         JsonReader jreader = new JsonReader(
                new BufferedReader(new InputStreamReader(
                        getClass().getResourceAsStream("/jsons/vehicleData.json")))
@@ -123,6 +120,8 @@ public class PnlVehicleController {
             }
         });
         
+        
+        
 
     }
     
@@ -160,8 +159,13 @@ public class PnlVehicleController {
             jvdao.create(v);
             JOptionPane.showMessageDialog(null, "Vehicle saved successfully.", 
                     "Information message", JOptionPane.INFORMATION_MESSAGE);
-            
-        
+    setChanged();
+    if(hasChanged()){
+        notifyObservers(gson);
+        System.out.println("Si cambio");
+    }else{
+        System.out.println("No cambio xd");
+    }
     }
     
     private void btnBrowseActionListener(ActionEvent e){
@@ -181,6 +185,21 @@ public class PnlVehicleController {
         
         pnlVehicle.getTxtImage().setText(file.getPath());        
     }
+    
+//    @Override
+//   public void addObserver(Observer o){observador.addObserver(o);}
+//   
+//    @Override
+//   public void notifyObservers(){
+////       Observer observado = null;
+////      observado.update(observador, gson);
+//   }
+//   
+//    @Override
+//   protected void setChanged(){}
+//    @Override
+//   public boolean hasChanged(){return false;
+//}
     
     
 } 
