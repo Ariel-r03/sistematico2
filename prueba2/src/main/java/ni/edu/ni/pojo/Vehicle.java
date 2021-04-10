@@ -26,6 +26,7 @@ public class Vehicle {
     private String engine;//50
     private String image;//100
     private String status;//20
+    private int id;
     //private int records;//4
     
     public enum Transmission{
@@ -72,6 +73,15 @@ public class Vehicle {
     public int getYear() {
         return year;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 
     public String getStatus() {
         return status;

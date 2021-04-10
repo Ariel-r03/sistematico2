@@ -54,7 +54,6 @@ public class PnlVehicleController extends Observable{
     private DefaultComboBoxModel cmbStatus;
     private JFileChooser fileChooser;
     private Border stockBorder;
-    private Observable observador= new Observable();
     private PnlVehicleShowController pnlVehicleShowController;
     
     public PnlVehicleController(PnlVehicle pnlVehicle) throws FileNotFoundException {
@@ -118,6 +117,14 @@ public class PnlVehicleController extends Observable{
             } catch (Exception ex) {
                 Logger.getLogger(PnlVehicleController.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+         setChanged();
+        if(hasChanged()){
+        notifyObservers(gson);
+        System.out.println("Si cambio");
+        }else{
+        System.out.println("No cambio xd");
+    }
         });
         
         
@@ -159,13 +166,7 @@ public class PnlVehicleController extends Observable{
             jvdao.create(v);
             JOptionPane.showMessageDialog(null, "Vehicle saved successfully.", 
                     "Information message", JOptionPane.INFORMATION_MESSAGE);
-    setChanged();
-    if(hasChanged()){
-        notifyObservers(gson);
-        System.out.println("Si cambio");
-    }else{
-        System.out.println("No cambio xd");
-    }
+   
     }
     
     private void btnBrowseActionListener(ActionEvent e){

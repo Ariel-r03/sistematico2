@@ -11,8 +11,10 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
 import ni.edu.ni.Frame.Controllers.PnlVehicleShowController;
 import ni.edu.ni.Frame.Controllers.dialogVehicleController;
+import ni.edu.ni.Frame.dao.daoImpl.JsonVehicleImpl;
 import ni.edu.ni.Frame.panels.DCreateV;
 import ni.edu.ni.Frame.panels.PnlVehicleShowInfo;
 
@@ -23,9 +25,10 @@ import ni.edu.ni.Frame.panels.PnlVehicleShowInfo;
 public class JIntFrame extends javax.swing.JInternalFrame {
     private PnlVehicleShowInfo pVShowInfo;
     private PnlVehicleShowController pnlVehicleShowController;
-
+    DefaultTableModel tm;
     private DCreateV dCreate;
     private dialogVehicleController DVehicle_Controller;
+    private JsonVehicleImpl jvdao;
     /**
      * Creates new form JInternalFrame
      */
@@ -107,8 +110,18 @@ public class JIntFrame extends javax.swing.JInternalFrame {
         });
 
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,7 +129,7 @@ public class JIntFrame extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanelViews, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(246, Short.MAX_VALUE)
+                .addContainerGap(169, Short.MAX_VALUE)
                 .addComponent(btnNew)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnUpdate)
@@ -129,7 +142,7 @@ public class JIntFrame extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanelViews, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNew)
                     .addComponent(btnUpdate)
@@ -154,6 +167,41 @@ public class JIntFrame extends javax.swing.JInternalFrame {
         }
         dCreate.setVisible(true);
     }//GEN-LAST:event_btnNewActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        int datos[]= new int [pVShowInfo.getTableInfo().getRowCount()];
+        tm= (DefaultTableModel) pVShowInfo.getTableInfo().getModel();
+        try {
+            jvdao= new JsonVehicleImpl();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(JIntFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+        int dato=(int) (tm.getValueAt(pVShowInfo.getTableInfo().getSelectedRow(),0));
+        try {
+            jvdao.delete(jvdao.findById(dato));
+            //datos=pVShowInfo.getTableInfo().getSelectedRows();
+//        for (int dato : datos) {
+//            try {
+//                //System.out.println(dato);
+//                jvdao.delete(jvdao.findById(dato));
+//            } catch (IOException ex) {
+//                Logger.getLogger(JIntFrame.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            
+//        }
+        } catch (IOException ex) {
+            System.out.println(ex);;
+        }
+
+//    if(pVShowInfo.getTableInfo().getRowCount()>1){
+//        
+//    }
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

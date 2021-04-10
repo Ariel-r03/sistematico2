@@ -6,6 +6,7 @@
 package ni.edu.ni.Frame.panels;
 
 import javax.swing.JComboBox;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -29,6 +30,14 @@ public class PnlVehicleShowInfo extends javax.swing.JPanel {
 
     public void setCmbSearch(JComboBox<String> CmbSearch) {
         this.CmbSearch = CmbSearch;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
     }
 
     public JTable getTableInfo() {
