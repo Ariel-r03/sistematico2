@@ -26,7 +26,11 @@ public class DCreateV extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
-
+    public DCreateV()
+    {
+        
+        initComponents();
+    }
     public JButton getBtnCancel() {
         return btnCancel;
     }

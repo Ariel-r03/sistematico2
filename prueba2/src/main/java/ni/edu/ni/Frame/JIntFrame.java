@@ -6,12 +6,14 @@
 package ni.edu.ni.Frame;
 
 import java.awt.BorderLayout;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
-import javax.swing.JPanel;
 import ni.edu.ni.Frame.Controllers.PnlVehicleShowController;
+import ni.edu.ni.Frame.Controllers.dialogVehicleController;
+import ni.edu.ni.Frame.panels.DCreateV;
 import ni.edu.ni.Frame.panels.PnlVehicleShowInfo;
 
 /**
@@ -19,8 +21,11 @@ import ni.edu.ni.Frame.panels.PnlVehicleShowInfo;
  * @author JADPA18
  */
 public class JIntFrame extends javax.swing.JInternalFrame {
-private PnlVehicleShowInfo pVShowInfo;
-private PnlVehicleShowController pnlVehicleShowController;
+    private PnlVehicleShowInfo pVShowInfo;
+    private PnlVehicleShowController pnlVehicleShowController;
+
+    private DCreateV dCreate;
+    private dialogVehicleController DVehicle_Controller;
     /**
      * Creates new form JInternalFrame
      */
@@ -29,16 +34,18 @@ private PnlVehicleShowController pnlVehicleShowController;
         holis();
     }
     
-    public void holis(){
-    jPanelViews.removeAll();
-    if(pVShowInfo==null){
-        pVShowInfo= new PnlVehicleShowInfo();
-        try {
+    public void holis()
+    {
+        jPanelViews.removeAll();
+        if(pVShowInfo == null)
+        {
+            pVShowInfo = new PnlVehicleShowInfo();
+            try {
             pnlVehicleShowController= new PnlVehicleShowController(pVShowInfo);
-        } catch (IOException ex) {
+            } catch (IOException ex) {
             Logger.getLogger(JIntFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       } 
+            }
+        }     
    
     jPanelViews.add(pVShowInfo, BorderLayout.CENTER);
     validate();
@@ -93,6 +100,11 @@ private PnlVehicleShowController pnlVehicleShowController;
         jPanelViews.setLayout(new java.awt.BorderLayout());
 
         btnNew.setText("New");
+        btnNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setText("Update");
 
@@ -104,7 +116,7 @@ private PnlVehicleShowController pnlVehicleShowController;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanelViews, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(357, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnNew)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnUpdate)
@@ -117,7 +129,7 @@ private PnlVehicleShowController pnlVehicleShowController;
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanelViews, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNew)
                     .addComponent(btnUpdate)
@@ -127,6 +139,21 @@ private PnlVehicleShowController pnlVehicleShowController;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
+        // TODO add your handling code here:
+        if (dCreate == null)
+        {
+            dCreate = new DCreateV(null, true);
+            
+            try {
+                DVehicle_Controller = new dialogVehicleController(dCreate);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(JIntFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        dCreate.setVisible(true);
+    }//GEN-LAST:event_btnNewActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

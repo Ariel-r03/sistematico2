@@ -10,6 +10,8 @@ import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import ni.edu.ni.Frame.Controllers.PnlVehicleController;
 import ni.edu.ni.Frame.Controllers.dialogVehicleController;
 import ni.edu.ni.Frame.panels.PnlVehicle;
@@ -154,7 +156,7 @@ public class JVehicleApp extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -178,7 +180,7 @@ public class JVehicleApp extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+        UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
