@@ -41,7 +41,7 @@ public class JFramViewController {
     private JsonVehicleImpl jvdao;
     private JIntFrame InternalFrame;
     private JFramView jFramV;
-    
+    private List<Vehicle> Vehicles = new ArrayList<Vehicle>();
     public JFramViewController(JFramView jFrameV)
     {
         this.jFramV = jFrameV;
@@ -55,6 +55,15 @@ public class JFramViewController {
         {
             try {
                 btnDeleteActionListener(e);
+            } catch (IOException ex) {
+                Logger.getLogger(JFramViewController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
+        jFramV.getBtnUpdate().addActionListener((e)->
+        {
+            try {
+                btnViewActionListener(e);
             } catch (IOException ex) {
                 Logger.getLogger(JFramViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -83,14 +92,20 @@ public class JFramViewController {
         }
         
     }
-    
-    public void showAll(List<Vehicle> vh, JTable jtable)
+    public void btnViewActionListener(ActionEvent e) throws IOException
     {
-        vh = new ArrayList<>();
+        Vehicles = (List<Vehicle>)jvdao.getAll();
+        showAll(Vehicles, jFramV.getTVehicles());
+    }
+    public void showAll(List<Vehicle> vh, JTable jtable) throws IOException
+    {
+        //vh = new ArrayList<Vehicle>();
+        //vh = (List<Vehicle>)jvdao.getAll();
         while (vh.size() > jFramV.getTVehicles().getRowCount())
                 tm.addRow(new Object[]{});
         
         System.out.println(vh.size());
+        /*
         for (int i = 0; i < vh.size(); i++) 
         {
             //jFramV.getTVehicles().setValueAt(jtable, i, i);
@@ -112,5 +127,6 @@ public class JFramViewController {
             
             
         }
+*/
     }
 }
