@@ -40,7 +40,7 @@ import ni.edu.ni.pojo.VehicleSubModel;
  *
  * @author Pablo
  */
-public class PnlVehicleController extends Observable{
+public class PnlVehicleController {
     private PnlVehicle pnlVehicle;
    // private PnlVehicleShowInfo pnlVShowInfo;
     private Gson gson;
@@ -56,9 +56,11 @@ public class PnlVehicleController extends Observable{
     private Border stockBorder;
     private PnlVehicleShowController pnlVehicleShowController;
     
+    
     public PnlVehicleController(PnlVehicle pnlVehicle) throws FileNotFoundException {
         this.pnlVehicle = pnlVehicle;
         initComponent();
+        
     }
     
 //    public PnlVehicleController(PnlVehicleShowInfo pnlVShowInfo) throws FileNotFoundException {
@@ -117,15 +119,10 @@ public class PnlVehicleController extends Observable{
             } catch (Exception ex) {
                 Logger.getLogger(PnlVehicleController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-         setChanged();
-        if(hasChanged()){
-        notifyObservers(gson);
-        System.out.println("Si cambio");
-        }else{
-        System.out.println("No cambio xd");
-    }
+        
         });
+            
+       
         
         
         
@@ -136,6 +133,7 @@ public class PnlVehicleController extends Observable{
         int stock, year;
         String make, model, style, vin, eColor, iColor, miles, engine, image, status;
         float price;
+        
         Vehicle.Transmission transmission = Vehicle.Transmission.AUTOMATIC;
         
         if(pnlVehicle.getTxtStock().getText().isEmpty()){
@@ -163,9 +161,11 @@ public class PnlVehicleController extends Observable{
                 style, vin, eColor, iColor, miles, price, transmission, engine, image, status);
         
         
-            jvdao.create(v);
+        jvdao.create(v);
+        
             JOptionPane.showMessageDialog(null, "Vehicle saved successfully.", 
                     "Information message", JOptionPane.INFORMATION_MESSAGE);
+        
    
     }
     

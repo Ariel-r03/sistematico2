@@ -8,20 +8,14 @@ package ni.edu.ni.Frame.Controllers;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,7 +24,6 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
 import ni.edu.ni.Frame.dao.daoImpl.JsonVehicleImpl;
 
 import ni.edu.ni.pojo.Vehicle;
@@ -40,7 +33,7 @@ import ni.edu.ni.Frame.panels.DCreateV;
  *
  * @author JADPA03
  */
-public class dialogVehicleController {
+public class dialogVehicleController extends Observable {
     private Gson gson;
     private JsonVehicleImpl jvdao;
     private List<VehicleSubModel> vehicleSubModels;
@@ -52,6 +45,8 @@ public class dialogVehicleController {
     private DefaultComboBoxModel cmbStatus;
     private JFileChooser fileChooser;
     private Border stockBorder;
+    Observable observado;
+    private PnlVehicleShowController pnlVehicleShowController;
 
     private DCreateV dCreate;
     
@@ -59,6 +54,14 @@ public class dialogVehicleController {
         this.dCreate = DVehicle;
         initComponent();
     }
+
+    dialogVehicleController() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    
+    
     
     private void initComponent() throws FileNotFoundException
     {
@@ -122,6 +125,9 @@ public class dialogVehicleController {
         int stock, year;
         String make, model, style, vin, eColor, iColor, miles, engine, image, status;
         float price;
+        observado=new Observable();
+        
+        pnlVehicleShowController=new PnlVehicleShowController(this);
         Vehicle.Transmission transmission = Vehicle.Transmission.AUTOMATIC;
         
         if (dCreate.getTxtStock().getText().isEmpty())
@@ -150,7 +156,14 @@ public class dialogVehicleController {
         Vehicle v = new Vehicle(stock, year, make, model, 
                 style, vin, eColor, iColor, miles, price, transmission, engine, image, status);
         
-        jvdao.create(v);
+        jvdao.create(v);  
+        setChanged();
+        observado.notifyObservers(pnlVehicleShowController);
+        if(hasChanged()){
+            System.out.println("Toy verdadero");
+        }else{
+            System.out.println("Toy falso");
+        }
         JOptionPane.showMessageDialog(null, "Vehicle saved successfully.", "Information message", JOptionPane.INFORMATION_MESSAGE);
     }
     
