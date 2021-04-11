@@ -16,6 +16,6 @@ import java.util.List;
 public interface Dao<T> {
     void create(T t) throws IOException;
     int update (T t) throws IOException;
-    boolean delete(T t) throws IOException;
+    boolean delete(T t) throws IOException; //, int row[]
     Collection<T> getAll() throws IOException;
 }
