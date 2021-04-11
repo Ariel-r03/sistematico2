@@ -17,7 +17,6 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
-import java.util.Observer;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,6 +27,7 @@ import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import ni.edu.ni.Frame.dao.daoImpl.JsonVehicleImpl;
 import ni.edu.ni.Frame.panels.PnlVehicle;
+
 import ni.edu.ni.pojo.Vehicle;
 import ni.edu.ni.pojo.VehicleSubModel;
 //import ni.edu.uni.programacion.backend.dao.implementation.JsonVehicleDaoImpl;
@@ -40,7 +40,7 @@ import ni.edu.ni.pojo.VehicleSubModel;
  *
  * @author Pablo
  */
-public class PnlVehicleController {
+public class PnlVehicleController extends Observable{
     private PnlVehicle pnlVehicle;
    // private PnlVehicleShowInfo pnlVShowInfo;
     private Gson gson;
@@ -56,11 +56,9 @@ public class PnlVehicleController {
     private Border stockBorder;
     private PnlVehicleShowController pnlVehicleShowController;
     
-    
     public PnlVehicleController(PnlVehicle pnlVehicle) throws FileNotFoundException {
         this.pnlVehicle = pnlVehicle;
         initComponent();
-        
     }
     
 //    public PnlVehicleController(PnlVehicleShowInfo pnlVShowInfo) throws FileNotFoundException {
@@ -119,10 +117,15 @@ public class PnlVehicleController {
             } catch (Exception ex) {
                 Logger.getLogger(PnlVehicleController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
-        });
             
-       
+         setChanged();
+        if(hasChanged()){
+        notifyObservers(gson);
+        System.out.println("Si cambio");
+        }else{
+        System.out.println("No cambio xd");
+    }
+        });
         
         
         
@@ -133,7 +136,6 @@ public class PnlVehicleController {
         int stock, year;
         String make, model, style, vin, eColor, iColor, miles, engine, image, status;
         float price;
-        
         Vehicle.Transmission transmission = Vehicle.Transmission.AUTOMATIC;
         
         if(pnlVehicle.getTxtStock().getText().isEmpty()){
@@ -161,11 +163,9 @@ public class PnlVehicleController {
                 style, vin, eColor, iColor, miles, price, transmission, engine, image, status);
         
         
-        jvdao.create(v);
-        
+            jvdao.create(v);
             JOptionPane.showMessageDialog(null, "Vehicle saved successfully.", 
                     "Information message", JOptionPane.INFORMATION_MESSAGE);
-        
    
     }
     

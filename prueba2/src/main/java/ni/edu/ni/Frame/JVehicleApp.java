@@ -7,23 +7,15 @@ package ni.edu.ni.Frame;
 
 import java.awt.BorderLayout;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDesktopPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import ni.edu.ni.Frame.Controllers.JFramViewController;
 import ni.edu.ni.Frame.Controllers.PnlVehicleController;
 import ni.edu.ni.Frame.Controllers.dialogVehicleController;
-import ni.edu.ni.Frame.dao.daoImpl.JsonVehicleImpl;
-import ni.edu.ni.Frame.panels.PnlVehicle;
 import ni.edu.ni.Frame.panels.PnlVehicleShowInfo;
-import ni.edu.ni.views.DCreate;
 import ni.edu.ni.Frame.panels.DCreateV;
-import ni.edu.ni.Frame.panels.JFramView;
-import ni.edu.ni.pojo.Vehicle;
 
 /**
  *
@@ -31,17 +23,15 @@ import ni.edu.ni.pojo.Vehicle;
  */
 public class JVehicleApp extends javax.swing.JFrame {
     //dialogVehicle vehicleD;
-    private PnlVehicle pnlVehicle;
+    
     private PnlVehicleController pnlVehicleController;
     private dialogVehicleController DVehicle_Controller;
     private JIntFrame jIntFrame;
     private PnlVehicleShowInfo pnlVShowInfo;
-    private DCreate DialogCreate;
+   
     
     private DCreateV dCreate;
-    private JFramViewController JIControl;
-    
-    private JFramView jFrameV;
+
     /**
      * Creates new form j
      */
@@ -145,33 +135,14 @@ public class JVehicleApp extends javax.swing.JFrame {
 
     private void mtViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mtViewActionPerformed
         // TODO add your handling code here:
-       /* jIntFrame= new JIntFrame();
+        jIntFrame= new JIntFrame();
        // jIntFrame.setSize( 1365,680 );
         //jIntFrame.setResizable(true);
         jIntFrame.setMaximizable(true);
         jIntFrame.setClosable(true);
         deskPane.add(jIntFrame);
         jIntFrame.setVisible(true);
-        */
-       try {
-        if (jFrameV == null)
-        {
-            
-                jFrameV = new JFramView();
-                JsonVehicleImpl jvdao = new JsonVehicleImpl();
-                JIControl = new JFramViewController(jFrameV);
-                
-                List<Vehicle> Lv = new ArrayList<Vehicle>();
-                Lv = (List<Vehicle>) jvdao.getAll();
-                JIControl.showAll(Lv, jFrameV.getTVehicles());// erro aqui
-            
-        }
-            addComponent(jFrameV);
-        } catch (FileNotFoundException ex) {
-                Logger.getLogger(JVehicleApp.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-                Logger.getLogger(JVehicleApp.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
         
     }//GEN-LAST:event_mtViewActionPerformed
 
@@ -216,7 +187,7 @@ public class JVehicleApp extends javax.swing.JFrame {
         });
     }
     
-    private void addComponent(JFramView component) {
+    private void addComponent(JDesktopPane component) {
         deskPane.removeAll();        
         deskPane.add(component, BorderLayout.CENTER);
         validate();

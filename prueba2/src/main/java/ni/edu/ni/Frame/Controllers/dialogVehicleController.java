@@ -127,7 +127,6 @@ public class dialogVehicleController extends Observable {
         float price;
         observado=new Observable();
         
-        pnlVehicleShowController=new PnlVehicleShowController(this);
         Vehicle.Transmission transmission = Vehicle.Transmission.AUTOMATIC;
         
         if (dCreate.getTxtStock().getText().isEmpty())

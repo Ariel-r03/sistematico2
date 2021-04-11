@@ -47,14 +47,14 @@ public class JsonVehicleImpl extends RandomTemplate implements VehicleDao {
         if(n==0){
             return null;
         }
-        //if(id!=0){
-//        int pos = randomBinarySearch(getCustomRandom().getRafH(), id, 1, n);
-//        
-//        
-//        if(pos<0){
-//            return null;
-//        }
-        //}
+        if(id!=0){
+        int pos = randomBinarySearch(getCustomRandom().getRafH(), id, 1, n);
+        
+        
+        if(pos<0){
+            return null;
+        }
+        }
         long posData = (id-1)*SIZE+4;
         if(id==0){
          posData = 4;   
@@ -63,7 +63,7 @@ public class JsonVehicleImpl extends RandomTemplate implements VehicleDao {
         getCustomRandom().getRafD().seek(posData);
         
         v = new Vehicle();
-        //v.setId(getCustomRandom().getRafD().readInt());
+        
         v = gson.fromJson(getCustomRandom().getRafD().readUTF(), Vehicle.class);
         System.out.println(v.getPrice());
         return v;
@@ -104,9 +104,8 @@ public class JsonVehicleImpl extends RandomTemplate implements VehicleDao {
         int n = getCustomRandom().getRafH().readInt();
         int k = getCustomRandom().getRafH().readInt();
                 
-        long posD = k*SIZE + 4;        
+        long posD = k*SIZE;        
         getCustomRandom().getRafD().seek(posD);
-        System.out.println(k);
         
         getCustomRandom().getRafD().writeInt(++k);//id
         t.setId(k);
@@ -125,16 +124,12 @@ public class JsonVehicleImpl extends RandomTemplate implements VehicleDao {
         close();
     }
 
-    public int update(Vehicle t, int row) throws IOException {
+    public int update(Vehicle t) throws IOException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    //@Override
+
+    @Override
     public boolean delete(Vehicle t) throws IOException {
-        
-        System.out.println(getCustomRandom().getRafH());
-        if (t == null)
-            return false;
-        
         int[] ides = null;
         getCustomRandom().getRafH().seek(0);
         int n =  getCustomRandom().getRafH().readInt();
@@ -198,41 +193,6 @@ public class JsonVehicleImpl extends RandomTemplate implements VehicleDao {
         }
         
         return vehicles;
-    }
-
-    //@Override
-    public boolean delete(Vehicle t, int row[]) throws IOException {
-    //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        
-        System.out.println(getCustomRandom().getRafH());
-        int[] ides = null;
-        getCustomRandom().getRafH().seek(0);
-        int n =  getCustomRandom().getRafH().readInt();
-        int k =  getCustomRandom().getRafH().readInt();
-        for(int i = 0; i<n; i++){
-            long posHeader = 8+i*4;
-             getCustomRandom().getRafH().seek(posHeader);
-             
-             int key =  getCustomRandom().getRafH().readInt();
-             if(key!=t.getId()){
-                 ides=add_ids(ides,key);
-             }
-             
-        }
-        
-        getCustomRandom().getRafH().seek(0);
-        getCustomRandom().getRafH().writeInt(--n);
-        getCustomRandom().getRafH().writeInt(k);
-        
-        for (int ide : ides) {
-            getCustomRandom().getRafH().writeInt(ide);
-        }
-        return true;
-    }
-
-    @Override
-    public int update(Vehicle t) throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

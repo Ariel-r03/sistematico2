@@ -18,12 +18,6 @@ import ni.edu.ni.Frame.dao.daoImpl.JsonVehicleImpl;
 import ni.edu.ni.Frame.panels.DCreateV;
 import ni.edu.ni.Frame.panels.PnlVehicleShowInfo;
 
-import ni.edu.ni.Frame.dao.daoImpl.RandomTemplate;
-import java.io.RandomAccessFile;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import ni.edu.ni.pojo.Vehicle;
-
 /**
  *
  * @author JADPA18
@@ -62,14 +56,6 @@ public class JIntFrame extends javax.swing.JInternalFrame {
     
 }
 
-    public JPanel getjPanelViews() {
-        return jPanelViews;
-    }
-
-    public void setjPanelViews(JPanel jPanelViews) {
-        this.jPanelViews = jPanelViews;
-    }
-    
     public JButton getBtnDelete() {
         return btnDelete;
     }
@@ -92,14 +78,6 @@ public class JIntFrame extends javax.swing.JInternalFrame {
 
     public void setBtnUpdate(JButton btnUpdate) {
         this.btnUpdate = btnUpdate;
-    }
-
-    public DefaultTableModel getTm() {
-        return tm;
-    }
-
-    public void setTm(DefaultTableModel tm) {
-        this.tm = tm;
     }
     
     
@@ -151,7 +129,7 @@ public class JIntFrame extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanelViews, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(169, Short.MAX_VALUE)
                 .addComponent(btnNew)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnUpdate)
@@ -164,7 +142,7 @@ public class JIntFrame extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanelViews, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNew)
                     .addComponent(btnUpdate)
@@ -195,41 +173,18 @@ public class JIntFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        
-        Vehicle v = new Vehicle();
-        int id;
-        id = (int) tm.getValueAt(pVShowInfo.getTableInfo().getSelectedRow(), 0) ;
-        //id = (int) pVShowInfo.getTableInfo().getSelectedRow();
-        
-        System.out.println(id);
-        
+        int datos[]= new int [pVShowInfo.getTableInfo().getRowCount()];
+        tm= (DefaultTableModel) pVShowInfo.getTableInfo().getModel();
         try {
-            v = jvdao.findById(id);
-        } catch (IOException ex) {
+            jvdao= new JsonVehicleImpl();
+        } catch (FileNotFoundException ex) {
             Logger.getLogger(JIntFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        //int datos[]= new int [pVShowInfo.getTableInfo().getRowCount()];
-        tm= (DefaultTableModel) pVShowInfo.getTableInfo().getModel();
-//        try {
-//            jvdao= new JsonVehicleImpl();
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(JIntFrame.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        if (v != null)
-        {
-            try {
-                jvdao.delete(v);
-            } catch (IOException ex) {
-                Logger.getLogger(JIntFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            tm.removeRow(pVShowInfo.getTableInfo().getSelectedRow());
-            JOptionPane.showMessageDialog(null, "Eliminado exitosamente");
-            return;
-        }
-        //int dato=(int) pVShowInfo.getTableInfo().getSelectedRow();
-        //   jvdao.delete(jvdao.findById(dato));
-        //datos=pVShowInfo.getTableInfo().getSelectedRows();
+    
+        int dato=(int) (tm.getValueAt(pVShowInfo.getTableInfo().getSelectedRow(),0));
+        try {
+            jvdao.delete(jvdao.findById(dato));
+            //datos=pVShowInfo.getTableInfo().getSelectedRows();
 //        for (int dato : datos) {
 //            try {
 //                //System.out.println(dato);
@@ -239,8 +194,13 @@ public class JIntFrame extends javax.swing.JInternalFrame {
 //            }
 //            
 //        }
-        //int dato=(int) (tm.getValueAt(pVShowInfo.getTableInfo().getSelectedRow(),0));
-        //int dato = pVShowInfo.getTableInfo().getSelectedRow();
+        } catch (IOException ex) {
+            System.out.println(ex);;
+        }
+
+//    if(pVShowInfo.getTableInfo().getRowCount()>1){
+//        
+//    }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
 

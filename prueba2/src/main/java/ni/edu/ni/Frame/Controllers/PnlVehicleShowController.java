@@ -6,6 +6,7 @@
 package ni.edu.ni.Frame.Controllers;
 
 import com.google.gson.Gson;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.FileNotFoundException;
@@ -16,6 +17,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -37,16 +39,12 @@ public class PnlVehicleShowController implements Observer {
     private Gson gson;
     private JsonVehicleImpl jvdao;
     private List<Vehicle> list= new ArrayList<Vehicle>();
-    private dialogVehicleController dvc;
     
     
     public PnlVehicleShowController(PnlVehicleShowInfo pnlVShowInfo) throws IOException {
         this.pnlVShowInfo = pnlVShowInfo;
         initComponent();
        
-    }
-    public PnlVehicleShowController(dialogVehicleController dvc){
-        this.dvc=dvc;
     }
     
     private void initComponent() throws FileNotFoundException, IOException 
@@ -104,11 +102,14 @@ public class PnlVehicleShowController implements Observer {
 
     @Override
     public void update(Observable o, Object o1) {
-        if(o==dvc)
-            System.out.println("Si funciona");
-    }
+//        try {
+//            initComponent();
+//        } catch (IOException ex) {
+//            Logger.getLogger(PnlVehicleShowController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
-    
+        System.out.println("Si funciona");
+    }
 
     
     
